@@ -108,3 +108,46 @@ while True:
 # Release handle to the webcam
 video_capture.release()
 cv2.destroyAllWindows()
+
+# """Get the image, resized the im"""
+
+        # im=imutils.resize(im,width=400)
+        # cv2.imshow('image', im)
+        # cv2.waitKey()
+        # (h,w)=im.shape[:2]
+        # print(w,h)
+        # blob=cv2.dnn.blobFromImage(cv2.resize(im,(300,300)),1.0,(300,300),(104.0,177.0,123.0))
+
+        # """Sample Image Detector"""
+        # #model structure: https://github.com/opencv/opencv/raw/3.4.0/samples/dnn/face_detector/deploy.prototxt
+        # #pre-trained weights: https://github.com/opencv/opencv_3rdparty/raw/dnn_samples_face_detector_20170830/res10_300x300_ssd_iter_140000.caffemodel
+        # prototxt='facial_detection/deploy.prototxt'
+        # model='facial_detection/res10_300x300_ssd_iter_140000.caffemodel'
+        # net=cv2.dnn.readNetFromCaffe(prototxt,model)
+
+        # net.setInput(blob)
+        # detections=net.forward()
+
+        # """"""
+
+        # for i in range(0, detections.shape[2]):
+
+        #     # extract the confidence (i.e., probability) associated with the prediction
+        #     confidence = detections[0, 0, i, 2]
+
+        #     # filter out weak detections by ensuring the `confidence` is
+        #     # greater than the minimum confidence threshold
+        #     if confidence > 0.5:
+        #         # compute the (x, y)-coordinates of the bounding box for the object
+        #         box = detections[0, 0, i, 3:7] * np.array([w, h, w, h])
+        #         (startX, startY, endX, endY) = box.astype("int")
+        #         # draw the bounding box of the face along with the associated probability
+        #         text = "{:.2f}%".format(confidence * 100)
+        #         y = startY - 10 if startY - 10 > 10 else startY + 10
+        #         cv2.rectangle(im, (startX, startY), (endX, endY), (0, 0, 255), 2)
+        #         cv2.putText(im, text, (startX, y),
+        #             cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
+
+        # """Show the resulting image"""
+        # cv2.imshow("dected_image",im)
+        # cv2.waitKey()
