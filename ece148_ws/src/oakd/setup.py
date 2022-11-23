@@ -24,8 +24,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'rgb_publisher = oakd.rgb_publisher:main',
-            'depth_publisher = oakd.depth_publisher:main'
+            'rgb = oakd.rgb_publisher:main',
+            'depth = oakd.depth_publisher:main'
         ],
     },
 )
