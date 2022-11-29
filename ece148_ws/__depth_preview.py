@@ -48,6 +48,7 @@ with dai.Device(pipeline) as device:
     while True:
         inDisparity = q.get()  # blocking call, will wait until a new data has arrived
         frame = inDisparity.getFrame()
+
         # Normalization for better visualization
         frame = (frame * (255 / depth.initialConfig.getMaxDisparity())).astype(np.uint8)
 
