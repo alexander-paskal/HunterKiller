@@ -23,7 +23,6 @@ OFFSET_WEIGHT = 0
 PERIOD = 10
 SCALE_STEERING = 1.2
 
-###########publisher code
 
 class MinimalPublisher(Node):
 
