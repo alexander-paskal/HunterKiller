@@ -5,21 +5,22 @@ import face_recognition
 from base64 import b64decode
 '''from google.colab.patches import cv2_imshow'''
 
+
 class FaceDetector:
     def __init__(self):
         self.target_face_encoding = None
         self.target_face_name = None
 
-    def learn_face(self, im):
+    def learn_face(self, impath):
         """
         Given an image of a face, update the FaceDetector internal model
         to be able to detect instances of that face in images
-        :param im: np.ndarray with dimensions HxWx3, color image with RGB channels (as opposed to BGR)
+        :param impath: path to image file with facenp.ndarray with dimensions HxWx3, color image with RGB channels (as opposed to BGR)
         :return:
         """
         
         # Load a sample picture and learn how to recognize it.
-        sample1_image = face_recognition.load_image_file(os.path.join(im))
+        sample1_image = face_recognition.load_image_file(os.path.join(impath))
         sample1_face_encoding = face_recognition.face_encodings(sample1_image)[0]
 
         # Create arrays of known face encodings and their names
@@ -79,38 +80,40 @@ class FaceDetector:
         pass
 
 
-face_detector = FaceDetector()
-'''sample image'''
-face_file = r"facial_detection\jon_snow_face.jpg"
-# im=cv2.imread(image)
-input_video= r"facial_detection\jon_snow_video.mp4"
-# outputFile = r"HunterKiller\VtoF"
-# face_detector.video_to_frames(inputFile, outputFile)
-# face_detector.learn_face(im)
 
-# cap= cv2.VideoCapture(inputFile)
-# face_locations = []
+if __name__ == '__main__':
+    face_detector = FaceDetector()
+    '''sample image'''
+    face_file = r"facial_detection\jon_snow_face.jpg"
+    # im=cv2.imread(image)
+    input_video= r"facial_detection\jon_snow_video.mp4"
+    # outputFile = r"HunterKiller\VtoF"
+    # face_detector.video_to_frames(inputFile, outputFile)
+    # face_detector.learn_face(im)
 
-# while True:
-#     # Grab a single frame of video
-#     ret, frame = cap.read()
-#     # Convert the image from BGR color (which OpenCV uses) to RGB   
-#     # color (which face_recognition uses)
-#     rgb_frame = frame[:, :, ::-1]
-#     # Find all the faces in the current frame of video
-#     face_locations = face_recognition.face_locations(rgb_frame)
-#     for top, right, bottom, left in face_locations:
-#         # Draw a box around the face
-#         cv2.rectangle(frame, (left, top), (right, bottom), (0, 0,  
-#         255), 2)
-#     # Display the resulting image
-#     cv2.imshow('Video', frame)
-    
+    # cap= cv2.VideoCapture(inputFile)
+    # face_locations = []
 
-#     # Wait for Enter key to stop
-#     if cv2.waitKey(25) == 13:
-#         break
+    # while True:
+    #     # Grab a single frame of video
+    #     ret, frame = cap.read()
+    #     # Convert the image from BGR color (which OpenCV uses) to RGB
+    #     # color (which face_recognition uses)
+    #     rgb_frame = frame[:, :, ::-1]
+    #     # Find all the faces in the current frame of video
+    #     face_locations = face_recognition.face_locations(rgb_frame)
+    #     for top, right, bottom, left in face_locations:
+    #         # Draw a box around the face
+    #         cv2.rectangle(frame, (left, top), (right, bottom), (0, 0,
+    #         255), 2)
+    #     # Display the resulting image
+    #     cv2.imshow('Video', frame)
 
-face_detector.learn_face(face_file)
-face_detector.detect_face(input_video)
-print("It worked!")
+
+    #     # Wait for Enter key to stop
+    #     if cv2.waitKey(25) == 13:
+    #         break
+
+    face_detector.learn_face(face_file)
+    face_detector.detect_face(input_video)
+    print("It worked!")
