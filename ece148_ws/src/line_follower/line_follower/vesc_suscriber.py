@@ -9,6 +9,7 @@ import rclpy
 from line_follower import Controller
 from geometry_msgs.Twist import Twist
 
+
 class vesc_subscriber(VESC):
 
     def __init__(self):
@@ -18,15 +19,13 @@ class vesc_subscriber(VESC):
             'control',
             self.listener_callback,
             10)
-        self.subscription  # prevent unused variable warning
 
         self.vesc = VESC("/dev/ttyACM0")
 
     def listener_callback(self, msg):
         throttle = msg.linear.x
         steering = msg.angular.x
-        self.vesc.run(anlge = steering, throttle = throttle)
-
+        self.vesc.run(angle=steering, throttle=throttle)
 
 
 def main(args=None):
