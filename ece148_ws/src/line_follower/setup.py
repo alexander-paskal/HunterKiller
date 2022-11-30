@@ -21,6 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             'vesc_suscriber = vesc_suscriber.py:main',
+            'controller = controller.py:main'
         ],
     },
 )

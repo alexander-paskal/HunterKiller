@@ -1,16 +1,7 @@
-
-#####imports for the jetson's code
-
 import cv2
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-
-######imports for the publisher's code from the website
-
-import rclpy
-from rclpy.node import Node
-from geometry_msgs.Twist import Twist
 
 COLORMIN = 100
 COLORMAX = 150
@@ -23,43 +14,6 @@ OFFSET_WEIGHT = 0
 PERIOD = 10
 SCALE_STEERING = 1.2
 
-###########publisher code
-
-class MinimalPublisher(Node):
-
-    def __init__(self):
-        super().__init__('minimal_publisher')
-        self.publisher_ = self.create_publisher(Twist, 'Controller', 10)
-        timer_period = 0.5  # seconds
-        self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.i = 0
-
-    def timer_callback(self):
-        msg = Twist()
-        msg.data = 'Hello World: %d' % self.i
-        self.publisher_.publish(msg)
-        self.get_logger().info('Publishing: "%s"' % msg.data)
-        self.i += 1
-
-
-def main(args=None):
-    rclpy.init(args=args)
-
-    minimal_publisher = MinimalPublisher()
-
-    rclpy.spin(minimal_publisher)
-
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
-    minimal_publisher.destroy_node()
-    rclpy.shutdown()
-
-
-if __name__ == '__main__':
-    main()
-
-##############code from the jetson
 
 class Controller:
     def __init__(self):
@@ -98,6 +52,7 @@ class Controller:
         if angle is None:
             return None
 
+
         angle = 180 - angle
         angle /= 18
         angle = round(angle, 2)
@@ -119,8 +74,8 @@ class Controller:
             vector = front_cm - back_cm
             vector = vector / W
             # return vector
-            # axs[1].clear()
-            # axs[1].quiver(0, 0, *vector)
+            axs[1].clear()
+            axs[1].quiver(0, 0, *vector)
 
             cos = np.dot(vector, np.array([1, 0])) / np.linalg.norm(vector)
             angle = np.arccos(cos)
@@ -157,6 +112,7 @@ class Controller:
 
         return np.array([xcm, -ycm])
 
+
 class BackupController:
     def get_control(self, im):
         im[260:, :] = 0
@@ -164,12 +120,11 @@ class BackupController:
         # return blacks, greens
         cblack = np.sum(blacks.flatten())
         cgreen = np.sum(greens.flatten())
-
+        
         if cblack > cgreen:
-            return 0.05
+            return 0.3
         else:
-            return 0.95
-
+            return 0.7
 
     def colormask(self, im):
         rgb = cv2.blur(im, (2, 2), 0)
@@ -185,7 +140,7 @@ class BackupController:
         # rgb[greenmachine, :] = np.array([0, 255, 0])
         # rgb[blackface, :] = np.array([0, 0, 255])
         # return mask
-
+        
         return blackface, greenmachine
 
 
@@ -197,6 +152,7 @@ def find_canny(img, thresh_low, thresh_high):  # function for implementing the c
     img_canny = cv2.Canny(img_blur, thresh_low, thresh_high)
     # show_image('Canny', img_canny)
     return img_canny
+
 
 def region_of_interest(image, bounds):  # function for extracting region of interest
     # bounds in (x,y) format
@@ -218,6 +174,7 @@ def draw_lines(img, lines):  # function for drawing lines on black mask
         cv2.line(mask_lines, (x1, y1), (x2, y2), [0, 0, 255], 2)
 
     return mask_lines
+
 
 def get_coordinates(img, line_parameters):  # functions for getting final coordinates
     slope = line_parameters[0]
@@ -242,6 +199,7 @@ def roi_from_lines(lines):
 
     return np.array(roi_points, dtype=np.int32)
 
+
 def process_im(rgb):
     lane_canny = find_canny(rgb, 100, 200)
     bounds = np.array(
@@ -260,6 +218,7 @@ def process_im(rgb):
         mask = np.array(cv2.cvtColor(mask, cv2.COLOR_RGB2GRAY), dtype=bool)
 
     return mask
+
 
 if __name__ == '__main__':
     i = 32280
