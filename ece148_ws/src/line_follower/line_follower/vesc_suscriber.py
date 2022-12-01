@@ -10,7 +10,7 @@ from line_follower import Controller
 from geometry_msgs.Twist import Twist
 
 
-class vesc_subscriber(VESC):
+class VescSubscriber(VESC):
 
     def __init__(self):
         super().__init__('vesc_subscriber')
