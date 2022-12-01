@@ -22,3 +22,5 @@ if __name__ == '__main__':
             if result:
                 vesc.run(angle=0, throttle=0.2)
                 time.sleep(0.5)
+        else:
+            vesc.run(angle=0, throttle=0)
