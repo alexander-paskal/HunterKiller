@@ -11,7 +11,7 @@ from sensor_msgs.msg import Image
 from geometry_msgs.msg import Twist
 import depthai
 import numpy as np
-from line_follower3 import Controller as Ctrl
+from line_follower3 import LineFollower
 
 
 class Controller(Node):
@@ -23,7 +23,7 @@ class Controller(Node):
         timer_period = 0.1  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.i = 0
-        self.controller = Ctrl()
+        self.controller = LineFollower()
         self.bridge = CvBridge()
 
         self.control_msg = Twist()

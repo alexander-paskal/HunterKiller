@@ -15,7 +15,7 @@ PERIOD = 10
 SCALE_STEERING = 1.2
 
 
-class Controller:
+class LineFollower:
     def __init__(self):
         self.backup = BackupController()
 
@@ -222,7 +222,7 @@ def process_im(rgb):
 
 if __name__ == '__main__':
     i = 32280
-    controller = Controller()
+    controller = LineFollower()
     backup = BackupController()
     fig, axs = plt.subplots(1, 2)
 

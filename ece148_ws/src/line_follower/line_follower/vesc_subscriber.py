@@ -31,7 +31,7 @@ class VescSubscriber(VESC):
 def main(args=None):
     rclpy.init(args=args)
 
-    vesc_suscriber = vesc_subscriber()
+    vesc_suscriber = VescSubscriber()
 
     rclpy.spin(vesc_suscriber)
 
