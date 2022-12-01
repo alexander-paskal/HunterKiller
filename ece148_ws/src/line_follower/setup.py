@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'vesc_suscriber = vesc_suscriber.py:main',
+            'vesc_subscriber = vesc_subscriber.py:main',
             'controller = controller.py:main'
         ],
     },
