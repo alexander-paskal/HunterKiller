@@ -64,7 +64,7 @@ class RGBPublisher(Node):
             msg = self.bridge.cv2_to_imgmsg(frame, "8SC1")
 
             self.publisher.publish(msg)
-            self.get_logger().info('Publishing: "%s"' % msg.data)
+            self.get_logger().info('Publishing Depth')
             self.i += 1
 
 
