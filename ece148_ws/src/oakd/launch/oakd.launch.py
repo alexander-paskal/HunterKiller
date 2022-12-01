@@ -6,14 +6,14 @@ def generate_launch_description():
     return LaunchDescription([
         Node(
             package='oakd',
-            executable='rgb_publisher',
-            name='rgb',
+            node_executable='rgb_publisher',
+            node_name='rgb',
             output='screen',
         ),
         Node(
             package='oakd',
-            executable='depth_publisher',
-            name='depth',
+            node_executable='depth_publisher',
+            node_name='depth',
             output='screen'
         )
     ])

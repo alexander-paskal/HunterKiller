@@ -6,14 +6,14 @@ def generate_launch_description():
     return LaunchDescription([
         Node(
             package='line_follower',
-            executable='controller',
-            name='controller',
+            node_executable='controller',
+            node_name='controller',
             output='screen',
         ),
         Node(
             package='line_follower',
-            executable='vesc_suscriber',
-            name='vesc_subscriber',
+            node_executable='vesc_suscriber',
+            node_name='vesc_subscriber',
             output='screen'
         )
     ])
