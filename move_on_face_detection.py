@@ -17,10 +17,19 @@ if __name__ == '__main__':
 
     while True:
         rgb = stream.get_rgb()
+        detection = False
         if rgb is not None:
+            print("RGB image detected")
             result = face_detector.detect_face(rgb)
             if result:
-                vesc.run(angle=0, throttle=0.2)
-                time.sleep(0.5)
+                print("face detected!")
+                detection = True
+            else:
+                print("no face detected")
+
+        if detection:
+            vesc.run(angle=0, throttle=0.2)
+            time.sleep(0.5)
         else:
             vesc.run(angle=0, throttle=0)
+
