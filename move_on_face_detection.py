@@ -5,7 +5,7 @@ from facial_detection import FaceDetector  # to import this, make sure you insta
 import time
 
 
-TARGET_FACE_PATH = "esther.jpg"  # Put the path to the image of the target face
+TARGET_FACE_PATH = "sushovan.png"  # Put the path to the image of the target face
 
 
 if __name__ == '__main__':
