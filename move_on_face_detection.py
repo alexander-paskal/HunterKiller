@@ -6,7 +6,7 @@ import time
 
 
 TOLERANCE = 0.8  # The default is 0.6, increase to make more permissive and decrease to make more strict
-TARGET_FACE_PATH = "sushovan.png"  # Put the path to the image of the target face
+TARGET_FACE_PATH = "sushovan.jpg"  # Put the path to the image of the target face
 
 
 if __name__ == '__main__':
@@ -22,6 +22,7 @@ if __name__ == '__main__':
         if rgb is not None:
             print("RGB image detected")
             result = face_detector.detect_face(rgb, tolerance=TOLERANCE)
+            print("result")
             if result:
                 print("face detected!")
                 detection = True
