@@ -1,6 +1,5 @@
 from vesc import VESC
 from video import VideoStream
-import cv2
 from facial_detection import FaceDetector  # to import this, make sure you install the face_recognition package
 # to do that, go to HunterKiller/face_recognition-1.3.0 in the terminal and run "pip install -e ."
 import time
@@ -22,7 +21,6 @@ if __name__ == '__main__':
         detection = False
         if rgb is not None:
             print("RGB image detected")
-            cv2.imshow("image",rgb)
             result = face_detector.detect_face(rgb, tolerance=TOLERANCE)
             print("result")
             if result:
