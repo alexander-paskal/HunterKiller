@@ -31,7 +31,7 @@ class FaceDetector:
             "Jon Snow",
         ]
 
-    def detect_face(self, im):
+    def detect_face(self, im, tolerance=0.6):
         """
         Given an image, determine where, if anywhere the face is present in the image
         and return the bounding box coordinates of the most likely face candidate
@@ -45,6 +45,7 @@ class FaceDetector:
 
         If no face is found, return None
         :param im: np.ndarray with dimensions HxWx3, color image with RGB channels (as opposed to BGR)
+        :param tolerance: Optional[float], the threshold distance for face detection
         :return: Optional[np.ndarray], the 4-dimensional vector of bounding box pixel coordinates described above
 
         """
@@ -58,7 +59,7 @@ class FaceDetector:
         target_locations = []
         for face_encoding, face_location in zip(face_encodings, face_locations):
             # See if the face is a match for the known face(s)
-            matches = face_recognition.compare_faces(self.target_face_encoding, face_encoding)
+            matches = face_recognition.compare_faces(self.target_face_encoding, face_encoding, tolerance=tolerance)
 
             # # If a match was found in known_face_encodings, just use the first one.
             # if True in matches:

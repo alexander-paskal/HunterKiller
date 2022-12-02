@@ -6,7 +6,7 @@ import time
 
 
 TARGET_FACE_PATH = "esther.jpg"  # Put the path to the image of the target face
-
+TOLERANCE = 0.8  # The default is 0.6, increase to make more permissive and decrease to make more strict
 
 if __name__ == '__main__':
     stream = VideoStream()
@@ -20,7 +20,7 @@ if __name__ == '__main__':
         detection = False
         if rgb is not None:
             print("RGB image detected")
-            result = face_detector.detect_face(rgb)
+            result = face_detector.detect_face(rgb, tolerance=TOLERANCE)
             if result:
                 print("face detected!")
                 detection = True
