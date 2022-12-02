@@ -5,8 +5,9 @@ from facial_detection import FaceDetector  # to import this, make sure you insta
 import time
 
 
-TARGET_FACE_PATH = "esther.jpg"  # Put the path to the image of the target face
 TOLERANCE = 0.8  # The default is 0.6, increase to make more permissive and decrease to make more strict
+TARGET_FACE_PATH = "sushovan.png"  # Put the path to the image of the target face
+
 
 if __name__ == '__main__':
     stream = VideoStream()
