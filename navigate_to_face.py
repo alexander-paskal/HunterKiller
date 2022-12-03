@@ -75,7 +75,7 @@ if __name__ == '__main__':
                 print("no face detected")
                 control_angle = 0
                 throttle = 0
-            plot_image(rgb, result)
+            # plot_image(rgb, result)
 
         vesc.run(throttle=control_throttle, angle=control_angle)
 
