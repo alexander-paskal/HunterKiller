@@ -5,3 +5,4 @@
 ece148_ws/build/
 ece148_ws/install/
 ece148_ws/log/
+*.egg-info/
