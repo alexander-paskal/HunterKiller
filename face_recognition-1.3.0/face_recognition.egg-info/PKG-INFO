@@ -7,7 +7,6 @@ Author: Adam Geitgey
 Author-email: ageitgey@gmail.com
 License: MIT license
 Keywords: face_recognition
-Platform: UNKNOWN
 Classifier: Development Status :: 4 - Beta
 Classifier: Intended Audience :: Developers
 Classifier: License :: OSI Approved :: MIT License
@@ -641,5 +640,3 @@ History
 ------------------
 
 * First working release.
-
-
