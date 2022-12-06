@@ -17,7 +17,7 @@ from line_follower3 import LineFollower
 class Controller(Node):
 
     def __init__(self):
-        super().__init__("controller")
+        super().__init__("ctler")
         self.subscriber = self.create_subscription(Image, "rgb", 10)
         self.publisher = self.create_publisher(Twist, "control", self.listener_callback, 10)
         timer_period = 0.1  # seconds
