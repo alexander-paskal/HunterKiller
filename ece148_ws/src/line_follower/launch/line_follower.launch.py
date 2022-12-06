@@ -7,7 +7,7 @@ def generate_launch_description():
         Node(
             package='line_follower',
             node_executable='controller',
-            node_name='ctler',
+            node_name='ctrler',
             output='screen',
         ),
         Node(

@@ -30,14 +30,14 @@ class VescSubscriber(VESC):
 def main(args=None):
     rclpy.init(args=args)
 
-    vesc_suscriber = VescSubscriber()
+    vesc_subscriber = VescSubscriber()
 
-    rclpy.spin(vesc_suscriber)
+    rclpy.spin(vesc_subscriber)
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
     # when the garbage collector destroys the node object)
-    vesc_suscriber.destroy_node()
+    vesc_subscriber.destroy_node()
     rclpy.shutdown()
 
 
