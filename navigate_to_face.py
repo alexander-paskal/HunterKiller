@@ -8,7 +8,7 @@ import cv2
 STEERING_SCALE = 0.3
 THROTTLE = 0
 TOLERANCE = 0.8  # The default is 0.6, increase to make more permissive and decrease to make more strict
-TARGET_FACE_PATH = "alex.jpg"  # Put the path to the image of the target face
+TARGET_FACE_PATH = "esther.jpg"  # Put the path to the image of the target face
 
 
 class PseudoVesc():
@@ -59,7 +59,7 @@ if __name__ == '__main__':
     face_detector.learn_face(TARGET_FACE_PATH)
 
     while True:
-        control_angle = 0
+        control_angle = 0.5
         control_throttle = 0
         rgb = stream.get_rgb()
 
@@ -73,7 +73,7 @@ if __name__ == '__main__':
                 throttle = THROTTLE
             else:
                 print("no face detected")
-                control_angle = 0
+                control_angle = 0.5
                 throttle = 0
             # plot_image(rgb, result)
 
