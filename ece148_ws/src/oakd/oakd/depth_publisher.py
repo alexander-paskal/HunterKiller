@@ -10,10 +10,10 @@ SUBPIXEL = False # Better accuracy for longer distance, fractional disparity 32-
 LR_CHECK = True # Better handling for occlusions:
 
 
-class RGBPublisher(Node):
+class DepthPublisher(Node):
 
     def __init__(self):
-        super().__init__("rgb")
+        super().__init__("depth")
         self.publisher = self.create_publisher(Image, "depth", 10)
 
         timer_period = 0.1  # seconds
@@ -71,7 +71,7 @@ class RGBPublisher(Node):
 def main(args=None):
     rclpy.init(args=args)
 
-    publisher = RGBPublisher()
+    publisher = DepthPublisher()
 
     rclpy.spin(publisher)
 
