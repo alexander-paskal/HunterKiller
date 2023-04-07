@@ -6,14 +6,13 @@ type is Twist, first number of the linear velocity is throttle and first number 
 
 from VESC import VESC
 import rclpy
-from line_follower import Controller
 from geometry_msgs.Twist import Twist
 
 
 class VescSubscriber(VESC):
 
     def __init__(self):
-        super().__init__('vesc_subscriber')
+        super().__init__('vesc')
         self.subscription = self.create_subscription(
             Twist,
             'control',
@@ -31,14 +30,14 @@ class VescSubscriber(VESC):
 def main(args=None):
     rclpy.init(args=args)
 
-    vesc_suscriber = VescSubscriber()
+    vesc_subscriber = VescSubscriber()
 
-    rclpy.spin(vesc_suscriber)
+    rclpy.spin(vesc_subscriber)
 
     # Destroy the node explicitly
     # (optional - otherwise it will be done automatically
     # when the garbage collector destroys the node object)
-    vesc_suscriber.destroy_node()
+    vesc_subscriber.destroy_node()
     rclpy.shutdown()
 
 
